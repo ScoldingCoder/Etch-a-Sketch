@@ -1,0 +1,28 @@
+Create a webpage with a 16x16 grid of square divs (COMPLETED){
+
+Step1: Create white container 500px*500px
+
+Step2: Create grid in container (16*16 grid)
+	use root modifier to make this dimension variable (16 is the default)
+	
+
+Step3: Create divs in a loop to place in the grid
+	use box-sizing to make div take up enitire space in grid space, no idea to calculate size for he divs
+
+Step4: Place divs in the grid (append to the container)
+
+}
+
+
+Add an event which changes the div colout to place on hover (COMPLETED) {
+
+NB This is to be done via DOM manipulation
+
+Step 1: Add an a hover listen event for the div (listen on entry)
+
+Step 2: Cahnge the Default rgb of the background and border<?) to 0 
+(try to set the actual variables now to save time for the rainbow option)
+
+Test Rainbow setting
+
+}

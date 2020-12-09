@@ -1,0 +1,26 @@
+:root{
+--columns:16 ;
+--rows:16;
+
+}
+
+
+.container{
+display:grid;
+grid-template-columns: repeat(var(--columns) ,1fr);
+grid-template-rows: repeat(var(--rows), 1fr);
+background-color:grey;
+border-width:0.5px;
+border-style: solid;
+height:500px;
+width:500px;
+margin:auto; 
+
+}
+
+.divs{
+box-sizing: border-box;
+border-style: solid;
+border-width:0.25px;
+    
+}
