@@ -26,3 +26,21 @@ Step 2: Cahnge the Default rgb of the background and border<?) to 0
 Test Rainbow setting
 
 }
+
+
+Add buttouns {
+
+Add at the top of the screen in the following order:
+
+RESET - Clears the board
+
+GRID NUMBER - Clears the board and creates a new one (if a number between 1 and 100 is enetred) *Next sesion. look into changing css variable in javascripts*
+
+ERASRE - Hover to change the color of each sqaure to the default colour
+
+RAINBOW - Random rbg on hover
+
+BLACK - change to black on hover 
+
+
+}
