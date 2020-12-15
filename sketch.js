@@ -1,11 +1,16 @@
 let root = document.documentElement;
 
+let paintBlack = true; //paint squares black by default
+let paintRainbow = false; //paint squares random rgb when true 
+let paintWhite = false; //paint squares white (erase) when true 
 
 
-rowNum = getComputedStyle(root).getPropertyValue("--rows");
-columnNum = getComputedStyle(root).getPropertyValue("--columns");
+let rowNum = getComputedStyle(root).getPropertyValue("--rows");
+let columnNum = getComputedStyle(root).getPropertyValue("--columns");
 
-count = rowNum*columnNum ;
+count = rowNum*columnNum;
+
+
 
 function getRandomInt(max) {
     return Math.floor(Math.random() * Math.floor(max));
@@ -16,8 +21,8 @@ function createDivs(divCount) {
   for(i = divCount-1; i>=0; i--){
 
     div = document.createElement('div');
-    div.setAttribute ('class', 'divs');
-    
+    div.classList.add("divs");
+   
     div.style.borderColor = "rgb(238, 232, 232)";
    
     div.style.backgroundColor ="white";
@@ -31,10 +36,46 @@ function createDivs(divCount) {
 container = document.querySelector('.container');
 
 //Creating divs
-createDivs(count) ;
+createDivs(count);
 
-let divAct = document.getElementsByClassName("divs"); // div to take action on
+let divAct = container.getElementsByClassName("divs"); // div to take action on
 
+function paint (){
+
+  for (var i = 0 ; i < divAct.length; i++) {
+      
+    divAct[i].addEventListener("mouseenter", function( event ){
+  
+    
+     
+    if (paintRainbow == true){  
+        let r = getRandomInt(255);
+        let g = getRandomInt(255);
+        let b = getRandomInt(255);
+        event.target.style.backgroundColor =`rgb(${r},${g},${b})`;
+      
+    }
+  
+    else if (paintBlack == true){
+  
+        event.target.style.backgroundColor = "black";
+        
+  
+  
+    } 
+  
+    else{
+  
+      event.target.style.backgroundColor ="white";
+  
+    }
+    
+      },false);
+    
+  }
+
+
+}
 
 const buttons = document.querySelectorAll('button');
 
@@ -66,44 +107,66 @@ buttons.forEach((button) => {
       } 
 
     
-    number = window.prompt("How many grids per row/column? Please enter a whole number between 1 and 100")
+    number = prompt("How many grids per row/column? Please enter a whole number between 1 and 100")
 
-    if ((number > 0) && (number < 65) && (number%1 ==0) ){
+    if ((number > 0) && (number < 101) && (number%1 ==0) ){
 
-    document.querySelectorAll('.divs').forEach(function(a){
-      a.remove()
-      }) 
-      createDivs(number**2);
+    // Remove all divs 
+
+    //document.querySelectorAll('.divs').forEach(el => el.remove());
+
+    container.innerHTML = "";
+
+      //Create new grid based on number entered
+    container.style.setProperty("--rows",number);
+    container.style.setProperty("--columns",number);
+    
+
+
+    //Populate new grid 
+    count = number**2;
+    createDivs(count);
+
+    //listen for hover and colour appropiate div
+    paint();
+      
     }
 
     else{
-      window.alert("Whoops,Looks like you made an error")
+      alert("Whoops,Looks like you made an error");
     }
+  }
+
+  else if (Action =="erase"){
+    paintBlack = false; 
+    paintRainbow = false; 
+    paintWhite = true; 
+
+  }
+
+
+  else if (Action =="rainbow"){
+    paintBlack = false; 
+    paintRainbow = true; 
+    paintWhite = false; 
+
+  }
+
+
+  else {
+    paintBlack = true; 
+    paintRainbow = false; 
+    paintWhite = false; 
+
   }
 
   });
 
 });
 
+
 // Listens for the hover on the the grid
-  for (var i = 0 ; i < count; i++) {
-      
-    divAct[i].addEventListener("mouseenter", function( event ){
-         
-        let r = getRandomInt(255)
-        let g = getRandomInt(255)
-        let b = getRandomInt(255)
-        /*event.target.style.backgroundColor = "black";*/
-        //event.target.style.borderColor = `rgb(${r},${g},${b})`;
-        event.target.style.backgroundColor =`rgb(${r},${g},${b})`;
-    
-      },false);
-    
- }
-
-  
-
-
+paint();
 
 
 
