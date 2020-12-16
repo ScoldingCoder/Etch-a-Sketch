@@ -1,24 +1,125 @@
 :root{
+
 --columns:16 ;
 --rows:16;
 
 }
 
+@font-face {
+
+font-family: 'ultraregular';
+src: url('ultra-webfont.woff2') format('woff2'),
+ url('ultra-webfont.woff') format('woff');
+font-weight: normal;
+font-style: normal;
+
+}
+
+
+h1{
+
+font-family: ultraregular;
+text-align: center;
+font-size: 48px;
+margin-bottom: 10px;
+margin-top: 5px;
+        
+}
+
+
+h1{
+
+animation: color-change 8s infinite;
+
+}
+  
+@keyframes color-change {
+
+0% { color: #FBD716; }
+50% { color:#25E2E2; }
+100% { color:#FBD716; }
+  
+}
+
+.userInput{
+    
+text-align:center;
+
+}
+
+button{
+height:3em;
+width:1 em;
+font-family: ultraregular;
+font-size:15px;
+font-weight: bold;
+color:black;
+margin-bottom: 5px;
+background-color: rgba(255, 255, 255, 0.815);
+border-radius: 7px;
+
+}
+
+button:hover{
+
+box-shadow: 1px 1px white;
+color: white;
+background-color:black;
+
+}
+
+input{
+
+background-color: rgba(255, 255, 255, 0.815);
+border-radius: 7px;
+
+}
+
+
+input:hover{
+
+background-color:black;
+    
+    }
+    
+
 
 .container{
+
 display:grid;
 grid-template-columns: repeat(var(--columns) ,1fr);
 grid-template-rows: repeat(var(--rows), 1fr);
 background-color:grey;
-border-width:0.5px;
+border-width:10px;
 border-style: solid;
-height:500px;
-width:500px;
+height:475px;
+width:475px;
+max-width:75vw;
+max-height:75vh;
 margin:auto; 
 
 }
 
+
+.container {
+    
+animation: color-change 8s infinite;
+
+}
+
+  
+@keyframes color-change {
+0% { color: #FBD716; }
+50% { color:#25E2E2; }
+100% { color:#FBD716; }
+
+}
+
+
+
+
 .divs{
+
 box-sizing: border-box;
 border-style: solid;
 border-width:0.25px;

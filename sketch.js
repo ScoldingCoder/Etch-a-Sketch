@@ -2,7 +2,10 @@ let root = document.documentElement;
 
 let paintBlack = true; //paint squares black by default
 let paintRainbow = false; //paint squares random rgb when true 
-let paintWhite = false; //paint squares white (erase) when true 
+let paintWhite = false; //paint squares white (erase) when true
+let paintSelect = false; // paints grid to colour selected by the user 
+
+let colorSelect =  "";
 
 
 let rowNum = getComputedStyle(root).getPropertyValue("--rows");
@@ -40,6 +43,7 @@ createDivs(count);
 
 let divAct = container.getElementsByClassName("divs"); // div to take action on
 
+//paints the div on hover
 function paint (){
 
   for (var i = 0 ; i < divAct.length; i++) {
@@ -64,9 +68,15 @@ function paint (){
   
     } 
   
-    else{
+    else if (paintWhite == true){
   
       event.target.style.backgroundColor ="white";
+  
+    }
+
+    else {
+  
+      event.target.style.backgroundColor =colorSelect;
   
     }
     
@@ -76,6 +86,7 @@ function paint (){
 
 
 }
+
 
 const buttons = document.querySelectorAll('button');
 
@@ -91,7 +102,7 @@ buttons.forEach((button) => {
     for (var i = 0 ; i < divAct.length; i++) {
     
       divAct[i].style.backgroundColor = "white";
-      //divAct[i].style.borderColor = "rgb(238, 232, 232)";
+     
       
       }    
 
@@ -102,7 +113,7 @@ buttons.forEach((button) => {
     for (var i = 0 ; i < divAct.length; i++) {
     
       divAct[i].style.backgroundColor = "white";
-      //divAct[i].style.borderColor = "rgb(238, 232, 232)";
+      
       
       } 
 
@@ -113,7 +124,6 @@ buttons.forEach((button) => {
 
     // Remove all divs 
 
-    //document.querySelectorAll('.divs').forEach(el => el.remove());
 
     container.innerHTML = "";
 
@@ -141,6 +151,7 @@ buttons.forEach((button) => {
     paintBlack = false; 
     paintRainbow = false; 
     paintWhite = true; 
+    paintSelect = false; 
 
   }
 
@@ -149,6 +160,7 @@ buttons.forEach((button) => {
     paintBlack = false; 
     paintRainbow = true; 
     paintWhite = false; 
+    paintSelect = false; 
 
   }
 
@@ -157,6 +169,7 @@ buttons.forEach((button) => {
     paintBlack = true; 
     paintRainbow = false; 
     paintWhite = false; 
+    paintSelect = false; 
 
   }
 
@@ -165,7 +178,22 @@ buttons.forEach((button) => {
 });
 
 
-// Listens for the hover on the the grid
+document.getElementById("colorPicked").oninput = function() {
+
+  colorSelect = this.value;
+
+  paintBlack = false; 
+  paintRainbow = false; 
+  paintWhite = false; 
+  paintSelect = true;
+
+
+}
+
+
+
+
+// Listens for the hover on the the grid (paints the intially created grid)
 paint();
 
 
