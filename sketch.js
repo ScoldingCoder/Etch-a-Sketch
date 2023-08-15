@@ -53,9 +53,9 @@ function paint (){
     
      
     if (paintRainbow == true){  
-        let r = getRandomInt(255);
-        let g = getRandomInt(255);
-        let b = getRandomInt(255);
+        let r = getRandomInt(256);
+        let g = getRandomInt(256);
+        let b = getRandomInt(256);
         event.target.style.backgroundColor =`rgb(${r},${g},${b})`;
       
     }
